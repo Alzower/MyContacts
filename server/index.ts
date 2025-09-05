@@ -1,9 +1,10 @@
 import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
-import { registerModel } from "./models/register.model.ts";
+import { registerController } from "./controllers/registerController.ts";
 
 const app = express();
+app.use(express.json());
 const port = 3000;
 
 dotenv.config();
@@ -19,13 +20,4 @@ mongoose
   })
   .catch((error) => console.error(error));
 
-app.get("/", (req, res) => {
-  mongoose
-    .model("user", registerModel)
-    .create({
-      email: "tesdsfsdfsdt",
-      Name: "flksdnflsdnflksd,fc",
-    })
-    .then(() => res.send("ahhhhhhh"))
-    .catch((error) => console.log(error));
-});
+app.post("/auth/register", registerController);

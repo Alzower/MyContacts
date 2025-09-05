@@ -1,12 +1,12 @@
 import mongoose from "mongoose";
 
-export const registerModel = new mongoose.Schema({
+export const userModel = new mongoose.Schema({
   email: {
     unique: true,
     type: String,
     require: true,
   },
-  Name: {
+  passowrd: {
     type: String,
     require: true,
   },
