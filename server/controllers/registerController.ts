@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import mongoose from "mongoose";
 import { findUserByEmail } from "../helper/user-helper";
-import { userModel } from "../models/user.model";
+import { UserModel } from "../models/user.model";
 import bcrypt from "bcrypt";
 
 export const registerController = async (req: Request, res: Response) => {
@@ -25,9 +25,8 @@ export const registerController = async (req: Request, res: Response) => {
   const hashedPassword = await bcrypt.hash(password, 10);
 
   try {
-    console.log(hashedPassword);
     await mongoose
-      .model("users", userModel)
+      .model("users", UserModel)
       .create({ email, password: hashedPassword });
     res.send("User is registered");
   } catch (error) {

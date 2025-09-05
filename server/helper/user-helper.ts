@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
-import { userModel } from "../models/user.model";
+import { UserModel } from "../models/user.model";
 
 export async function findUserByEmail(email: string) {
-  return await mongoose.model("users", userModel).findOne({ email });
+  return await mongoose.model("users", UserModel).findOne({ email });
 }

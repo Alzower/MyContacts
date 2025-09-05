@@ -1,16 +1,27 @@
 import mongoose from "mongoose";
+import { nanoid } from "nanoid";
 
-export const userModel = new mongoose.Schema({
+export const ContactModel = new mongoose.Schema({
+    id: {
+      type: String,
+      default: () => nanoid(10), 
+      unique: true,
+    },
   firstName: {
     type: String,
-    require: true,
+    required: true,
   },
   lastName: {
     type: String,
-    require: true,
+    required: true,
   },
   phone: {
     type: String,
-    require: true,
+    required: true,
   },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "users", 
+    required: true,
+  }
 });
