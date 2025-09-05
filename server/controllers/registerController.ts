@@ -5,7 +5,6 @@ import { userModel } from "../models/user.model";
 import bcrypt from "bcrypt";
 
 export const registerController = async (req: Request, res: Response) => {
-  console.log(req.body);
   const { email, password } = req.body;
 
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -29,7 +28,7 @@ export const registerController = async (req: Request, res: Response) => {
     console.log(hashedPassword);
     await mongoose
       .model("users", userModel)
-      .create({ email, passowrd: hashedPassword });
+      .create({ email, password: hashedPassword });
     res.send("User is registered");
   } catch (error) {
     res.send(error);
