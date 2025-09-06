@@ -1,10 +1,10 @@
 import express from "express";
 import dotenv from "dotenv";
-import { authMiddleWare } from "./middleware/auth.ts";
+import { authMiddleWare } from "./middleware/auth";
 import swaggerUi from "swagger-ui-express";
-import { swaggerDocs } from "./swagger.ts";
-import authRouter from "./routes/auth.ts";
-import contactsRouter from "./routes/contacts.ts";
+import { swaggerDocs } from "./swagger";
+import authRouter from "./routes/auth";
+import contactsRouter from "./routes/contacts";
 
 dotenv.config();
 const app = express();

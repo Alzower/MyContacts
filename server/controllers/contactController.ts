@@ -12,6 +12,9 @@ export const createContactController = async (
     return res.status(400).send("firstName, lastName and phone are required");
   }
   try {
+    if (!req.user) {
+      throw new Error("User not authenticated");
+    }
     await mongoose.model("contacts", ContactModel).create({
       firstName,
       lastName,
@@ -29,6 +32,9 @@ export const getContactsController = async (
   res: Response
 ) => {
   try {
+    if (!req.user) {
+      throw new Error("User not authenticated");
+    }
     const contacts = await mongoose
       .model("contacts", ContactModel)
       .find({ user: req.user.objectId });
