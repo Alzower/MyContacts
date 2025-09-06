@@ -15,9 +15,13 @@ export const loginController = async (req: Request, res: Response) => {
 
   if (!checkPasswordValid) return res.status(400).send("invalid password");
 
-  const token = jwt.sign({ email: user.email }, process.env.JWT_SECRET, {
-    expiresIn: "1h",
-  });
+  const token = jwt.sign(
+    { email: user.email, id: user.id, objectId: user._id },
+    process.env.JWT_SECRET,
+    {
+      expiresIn: "7d",
+    }
+  );
 
   return res.send(token);
 };
