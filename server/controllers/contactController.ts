@@ -37,3 +37,46 @@ export const getContactsController = async (
     res.status(500).send(error);
   }
 };
+
+export const deleteContactController = async (
+  req: AuthRequest,
+  res: Response
+) => {
+  const contactId = req.params.id;
+  if (!contactId) {
+    return res.status(400).send("Contact ID is required");
+  }
+  try {
+    const contact = await mongoose
+      .model("contacts", ContactModel)
+      .findOneAndDelete({ id: contactId });
+    if (!contact) {
+      return res.status(404).send("Contact not found");
+    }
+    res.status(200).send("Contact deleted");
+  } catch (error) {
+    res.status(500).send(error);
+  }
+};
+
+export const updateContactController = async (
+  req: AuthRequest,
+  res: Response
+) => {
+  const contactId = req.params.id;
+  const { firstName, lastName, phone } = req.body;
+  if (!contactId) {
+    return res.status(400).send("Contact ID is required");
+  }
+  try {
+    const contact = await mongoose
+      .model("contacts", ContactModel)
+      .findOneAndUpdate({ id: contactId }, { firstName, lastName, phone });
+    if (!contact) {
+      return res.status(404).send("Contact not found");
+    }
+    res.status(200).send(contact);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+};

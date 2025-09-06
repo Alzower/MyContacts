@@ -1,12 +1,12 @@
-import { NextFunction, Request, Response } from "express";
+import { NextFunction, Response } from "express";
 import { AuthRequest } from "../models/auth-request.model";
+import jwt from "jsonwebtoken";
 
 export const authMiddleWare = (
   req: AuthRequest,
   res: Response,
   next: NextFunction
 ) => {
-  const jwt = require("jsonwebtoken");
   const token = req.header("Authorization").replace("Bearer ", "");
   if (!token) res.status(404).send("token not found");
   try {
