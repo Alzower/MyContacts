@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon index.ts",
     "build": "tsc -p tsconfig.prod.json",
-    "start:prod": "tsc -p tsconfig.prod.json && node dist/index.js"
+    "start:prod": "tsc -p tsconfig.prod.json && node --max-old-space-size=4096 dist/index.js"
   },
   "author": "Glenn GUILLARD",
   "license": "ISC",
