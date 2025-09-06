@@ -4,7 +4,9 @@
   "description": "MyContacts By Glenn GUILLARD-M1-DEV2",
   "main": "index.ts",
   "scripts": {
-    "start": "nodemon index.ts"
+    "start2": "nodemon index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js"
   },
   "author": "Glenn GUILLARD",
   "license": "ISC",
