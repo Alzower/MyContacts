@@ -59,6 +59,9 @@ export const deleteContactController = async (
     if (!contact) {
       return res.status(404).send("Contact not found");
     }
+    if (contact.user.toString() !== req.user?.objectId) {
+      return res.status(403).send("Forbidden");
+    }
     res.status(200).send("Contact deleted");
   } catch (error) {
     res.status(500).send(error);
@@ -77,9 +80,13 @@ export const updateContactController = async (
   try {
     const contact = await mongoose
       .model("contacts", ContactModel)
-      .findOneAndUpdate({ id: contactId }, { firstName, lastName, phone });
+      .findOneAndUpdate(
+        { id: contactId, user: req.user?.objectId },
+        { firstName, lastName, phone },
+        { new: true }
+      );
     if (!contact) {
-      return res.status(404).send("Contact not found");
+      return res.status(404).send("Contact not found or you are not the owner");
     }
     res.status(200).send(contact);
   } catch (error) {
