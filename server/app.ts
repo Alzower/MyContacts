@@ -9,9 +9,11 @@ import contactsRouter from "./routes/contacts";
 dotenv.config();
 const app = express();
 app.use(express.json());
+
 app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app.use("/auth", authRouter);
+
 app.use("/contacts", authMiddleWare, contactsRouter);
 
 export default app;

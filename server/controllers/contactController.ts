@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { Response } from "express";
 import { AuthRequest } from "../models/auth-request.model";
 import mongoose from "mongoose";
 import { ContactModel } from "../models/contact.model";

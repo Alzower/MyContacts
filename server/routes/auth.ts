@@ -9,8 +9,26 @@ const authRouter = express.Router();
  * /register:
  *   post:
  *     summary: Register a new user
- *     tags: [Auth]
+ *     tags:
+ *       - Auth
+ *     parameters:
+ *       - in: body
+ *         schema:
+ *           type: object
+ *           required:
+ *             - email
+ *             - password
+ *           properties:
+ *             email:
+ *               type: string
+ *               format: email
+ *               description: User's email address
+ *             password:
+ *               type: string
+ *               format: password
+ *               description: User's password
  */
+
 authRouter.post("/register", registerController);
 
 /**
@@ -18,7 +36,24 @@ authRouter.post("/register", registerController);
  * /login:
  *   post:
  *     summary: Login a user
- *     tags: [Auth]
+ *     tags:
+ *       - Auth
+ *     parameters:
+ *       - in: body
+ *         schema:
+ *           type: object
+ *           required:
+ *             - email
+ *             - password
+ *           properties:
+ *             email:
+ *               type: string
+ *               format: email
+ *               description: User's email address
+ *             password:
+ *               type: string
+ *               format: password
+ *               description: User's password
  */
 authRouter.post("/login", loginController);
 
