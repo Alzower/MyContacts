@@ -20,7 +20,7 @@ export const registerController = async (req: Request, res: Response) => {
   }
 
   if (await findUserByEmail(email)) {
-    return res.status(400).send("User already exists");
+    return res.status(400).send("User with this email already exists");
   }
   const hashedPassword = await bcrypt.hash(password, 10);
 
