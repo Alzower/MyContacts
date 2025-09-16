@@ -12,18 +12,42 @@ function Login() {
 
   return (
     <>
-      <div>Login Page</div>
-      <form onSubmit={onSubmit}>
-        <input type="email" placeholder="Email" {...register("email")} />
-        <input
-          type="password"
-          placeholder="Password"
-          {...register("password")}
-        />
-        <button type="submit">Login</button>
-      </form>
+      <div className="flex flex-col items-end justify-center min-h-screen bg-green-200">
+        <form
+          onSubmit={onSubmit}
+          className="w-full max-w-sm min-h-screen bg-white p-6 rounded-lg shadow-md space-y-4"
+        >
+          <h1 className="text-3xl font-bold mb-6 text-gray-800">Login Page</h1>
+          <input
+            type="email"
+            placeholder="Email"
+            {...register("email")}
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+          />
 
-      <a href="/register">Go Register</a>
+          <input
+            type="password"
+            placeholder="Password"
+            {...register("password")}
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+          />
+
+          <button
+            type="submit"
+            className="w-full bg-green-500 text-white py-2 rounded-md hover:bg-green-600 transition-colors"
+          >
+            Login
+          </button>
+          <div className="w-full flex justify-end">
+            <a
+              href="/register"
+              className="text-end text-blue-500 hover:underline"
+            >
+              Go Register
+            </a>
+          </div>
+        </form>
+      </div>
     </>
   );
 }
