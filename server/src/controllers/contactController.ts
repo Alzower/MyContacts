@@ -8,6 +8,7 @@ export const createContactController = async (
   res: Response
 ) => {
   const { firstName, lastName, phone } = req.body;
+  console.log("Creating contact with data:", firstName, lastName, phone);
   if (!firstName || !lastName || !phone) {
     return res.status(400).send("firstName, lastName and phone are required");
   }

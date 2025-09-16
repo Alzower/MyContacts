@@ -7,6 +7,7 @@ import Login from "./modules/app/login/Page.tsx";
 import Register from "./modules/app/register/Page.tsx";
 import Contacts from "./modules/contacts/Page.tsx";
 import Dashboard from "./modules/contacts/dashboard/Page.tsx";
+import { ThemeProvider } from "@material-tailwind/react";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <ThemeProvider>
+      <RouterProvider router={router} />
+    </ThemeProvider>
   </StrictMode>
 );
