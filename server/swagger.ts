@@ -7,6 +7,7 @@ const swaggerOptions = {
       title: "API Documentation",
       version: "1.0.0",
     },
+
     components: {
       securitySchemes: {
         bearerAuth: {
@@ -17,7 +18,7 @@ const swaggerOptions = {
       },
     },
   },
-  apis: ["./routes/*.ts"],
+  apis: ["src/routes/*.ts"],
 };
 
 export const swaggerDocs = swaggerJsDoc(swaggerOptions);

@@ -72,6 +72,7 @@ authRouter.post("/register", registerController);
  *       500:
  *         description: Server error
  */
+
 authRouter.post("/login", loginController);
 
 export default authRouter;

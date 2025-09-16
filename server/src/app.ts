@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import { authMiddleWare } from "./middleware/auth";
 import swaggerUi from "swagger-ui-express";
-import { swaggerDocs } from "./swagger";
+import { swaggerDocs } from "../swagger";
 import authRouter from "./routes/auth";
 import contactsRouter from "./routes/contacts";
 
