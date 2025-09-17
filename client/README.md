@@ -1,69 +1,37 @@
-# React + TypeScript + Vite
+# 📁 Section Client
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## ⚙️ Installation des dépendances et configuration
 
-Currently, two official plugins are available:
+Pour lancer le projet, rendez-vous dans le dossier `client/` et installez les dépendances avec :
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
+Cette commande permet de récupérer toutes les dépendances nécessaires au projet.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🔧 Configuration de l’API
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Créez un fichier .env à la racine du dossier client/ pour configurer l’URL de l’API.
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 🌱 Pour tester en local :
 ```
+VITE_API_URL="http://localhost:3000"
+```
+### ☁️ Pour utiliser l’API en ligne :
+```
+VITE_API_URL="https://nightgaunt.cloud/api"
+```
+## 🚀 Lancer le projet
+
+### Mode développement :
+```bash
+npm run dev
+```
+⚠️ Assurez-vous d’avoir bien lancé la partie serveur avant de démarrer le client.
+Si vous ne l’avez pas encore configurée, rendez-vous dans le dossier server/ et consultez son README pour les instructions.
+
+### Build pour la production :
+```bash
+npm run build
+```
+<p align="right"><small>Fait le 17/09/2025</small></p> 
