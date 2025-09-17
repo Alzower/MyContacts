@@ -23,6 +23,6 @@ export async function loginService(email: string, password: string) {
   }
 }
 
-function addJWTToLocalStorage(token: string) {
-  localStorage.setItem("jwt_token", token);
+function addJWTToLocalStorage(token: {jwt_token:string}) {
+  localStorage.setItem("jwt_token", token.jwt_token);
 }

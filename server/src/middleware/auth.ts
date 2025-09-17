@@ -16,6 +16,7 @@ export const authMiddleWare = (
       throw new Error("JWT_SECRET not defined");
     }
     req.user = jwt.verify(token, process.env.JWT_SECRET) as unknown as User;
+
     next();
   } catch (error) {
     return res.status(400).send(error);

@@ -28,7 +28,8 @@ function Dashboard() {
   };
 
   const transformContacts = (data: string): Card[] => {
-    return JSON.parse(data).map(
+    const contact = JSON.parse(data).contacts
+    return contact.map(
       (item: {
         id: string;
         firstName: string;
