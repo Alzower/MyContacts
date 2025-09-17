@@ -10,7 +10,7 @@ export const registerController = async (req: Request, res: Response) => {
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
   if (!email || !password) {
-    return res.send("email and pasword is required");
+    return res.status(400).send("email and pasword is required");
   }
 
   if (!emailRegex.test(email)) {

@@ -97,7 +97,12 @@ function UpsertContact({ open, onClose, onSave, data }: UpsertContactProps) {
           <Input
             id="phone"
             value={phone}
-            onChange={(e) => setPhone(e.target.value)}
+            onChange={(e) => {
+              const value = e.target.value;
+              if (/^[0-9 ]*$/.test(value)) {
+                setPhone(value);
+              }
+            }}
             className="w-full p-3 border border-gray-300 rounded shadow-sm 
              focus:outline-none focus:ring-2 focus:ring-blue-500 
              focus:border-blue-500 text-gray-900"

@@ -1,13 +1,20 @@
 import { useForm } from "react-hook-form";
 import { loginService } from "./login.service";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 function Login() {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
-
+  const [errorMessage, setErrorMessage] = useState<string | undefined>(
+    undefined
+  );
   const onSubmit = handleSubmit((data) => {
-    loginService(data.email, data.password).then(() => navigate("/contacts"));
+    loginService(data.email, data.password)
+      .then(() => navigate("/contacts"))
+      .catch(() => {
+        setErrorMessage("Erreur lors de la connexion.");
+      });
   });
 
   return (
@@ -18,6 +25,11 @@ function Login() {
           className="w-full max-w-sm min-h-screen bg-white p-6 rounded-lg shadow-md space-y-4"
         >
           <h1 className="text-3xl font-bold mb-6 text-gray-800">Login Page</h1>
+          {errorMessage && (
+            <div className="w-full p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg">
+              {errorMessage}
+            </div>
+          )}
           <input
             type="email"
             placeholder="Email"

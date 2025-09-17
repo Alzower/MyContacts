@@ -3,19 +3,24 @@ import { AuthRequest } from "../models/auth-request.model";
 import mongoose from "mongoose";
 import { ContactModel } from "../models/contact.model";
 
+const phoneRegex = /^(?:\d{10}|\d{2}(?:\s\d{2}){4})$/;
+
 export const createContactController = async (
   req: AuthRequest,
   res: Response
 ) => {
   const { firstName, lastName, phone } = req.body;
-  console.log("Creating contact with data:", firstName, lastName, phone);
   if (!firstName || !lastName || !phone) {
     return res.status(400).send("firstName, lastName and phone are required");
+  }
+  if (!phoneRegex.test(phone)) {
+    return res.status(400).send("Invalid phone number format");
   }
   try {
     if (!req.user) {
       throw new Error("User not authenticated");
     }
+
     await mongoose.model("contacts", ContactModel).create({
       firstName,
       lastName,
@@ -77,6 +82,9 @@ export const updateContactController = async (
   const { firstName, lastName, phone } = req.body;
   if (!contactId) {
     return res.status(400).send("Contact ID is required");
+  }
+  if (!phoneRegex.test(phone)) {
+    return res.status(400).send("Invalid phone number format");
   }
   try {
     const contact = await mongoose

@@ -7,7 +7,14 @@ const swaggerOptions = {
       title: "API Documentation",
       version: "1.0.0",
     },
-
+    servers: [
+      {
+        url: "https://nightgaunt.cloud/api",
+      },
+      {
+        url: "http://localhost:3000",
+      },
+    ],
     components: {
       securitySchemes: {
         bearerAuth: {

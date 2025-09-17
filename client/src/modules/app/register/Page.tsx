@@ -1,10 +1,28 @@
 import { useForm } from "react-hook-form";
 import { registerNewUser } from "./register.service";
+import { useState } from "react";
 
 function Register() {
   const { register, handleSubmit } = useForm();
+  const [message, setMessage] = useState<
+    { message: string; type: "sucess" | "error" } | undefined
+  >(undefined);
+
   const onSubmit = handleSubmit((data) => {
-    registerNewUser(data.email, data.login);
+    registerNewUser(data.email, data.password)
+      .then(() => {
+        setMessage({
+          message: "Votre compte a été enregistré avec succès",
+          type: "sucess",
+        });
+      })
+      .catch(() => {
+        setMessage({
+          message:
+            "Une erreur est survenue lors de la création de votre compte",
+          type: "error",
+        });
+      });
   });
   return (
     <>
@@ -16,6 +34,16 @@ function Register() {
           <h1 className="text-3xl font-bold mb-6 text-gray-800">
             Register Page
           </h1>
+          {message && message.type === "error" && (
+            <div className="w-full p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg">
+              {message.message}
+            </div>
+          )}
+          {message && message.type === "sucess" && (
+            <div className="w-full p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg">
+              {message.message}
+            </div>
+          )}
 
           <input
             type="email"

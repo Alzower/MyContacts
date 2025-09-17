@@ -9,8 +9,6 @@ export function createContact(
   firstName: string,
   phone: string
 ) {
-  console.log(`${import.meta.env.VITE_API_URL}/contacts`);
-  console.log("Creating contact:", { lastName, firstName, phone });
   return axiosJWT().post(
     `${import.meta.env.VITE_API_URL}/contacts`,
     JSON.stringify({ firstName, lastName, phone })
