@@ -43,4 +43,11 @@ npm run start:prod
 ```
 Cette commande build et lance l’application en version production.
 
+
+## 🧪 Tests
+Pour lancer les tests, utilisez la commande suivante :
+```bash
+npm run test
+```
+
 <p align="right"><small>Fait le 17/09/2025</small></p> 
