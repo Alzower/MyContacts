@@ -11,7 +11,6 @@ describe("Contacts integration tests", () => {
 
   describe("POST /contacts", () => {
     it("crée un contact avec succès", async () => {
-      // Créer un utilisateur pour ce test
       const userData = { email: "user1@example.com", password: "password123" };
       await request(app).post("/auth/register").send(userData);
       const loginRes = await request(app).post("/auth/login").send(userData);
