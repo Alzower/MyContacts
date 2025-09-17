@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon src/index.ts",
     "test": "jest",
-    "start:prod": "tsc -p tsconfig.prod.json && node dist/index.js"
+    "start:prod": "tsc -p tsconfig.prod.json && node dist/src/index.js"
   },
   "author": "Glenn GUILLARD",
   "license": "ISC",
